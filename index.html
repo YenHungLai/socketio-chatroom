@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Fontawesome -->
+    <script defer src="https://kit.fontawesome.com/aff0d68d46.js" crossorigin="anonymous"></script>
+    <!-- Public assets -->
+    <script defer src="/socket.io/socket.io.js"></script>
+    <script defer src="client.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Chatroom App</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="side-drawer-container">
+
+        </div>
+        <div class="search-container">
+            <h1>Chat</h1>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search">
+            </div>
+            <div class="rooms">
+                <button id="add-room">
+                    <i class="fas fa-plus fa-2x"></i>
+                </button>
+            </div>
+        </div>
+        <div class="chat-area-container">
+            <div class="chat-area">
+                <ul id='messages'></ul>
+            </div>
+            <form action="#">
+                <div class="input-container">
+                    <i class="far fa-smile"></i>
+                    <input id="msg-input" placeholder="Type a message" type="text">
+                    <div>
+                        <i class="fas fa-paperclip"></i>
+                        <button type="submit"><i class="far fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

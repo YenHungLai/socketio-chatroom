@@ -1,0 +1,103 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.container {
+	display: flex;
+	height: 90%;
+	width: 90%;
+	border: 1px black solid;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.side-drawer-container {
+	width: 15%;
+	height: 100%;
+}
+
+.search-container {
+	width: 30%;
+	height: 100%;
+	border: 1px red solid;
+}
+
+.chat-area-container {
+	flex: 1;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	background-color: #e9eafb;
+}
+
+.chat-area {
+	position: relative;
+	left: 3%;
+	height: 80%;
+	width: 90%;
+	padding: 2em;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.chat-msg {
+	display: inline-block;
+	padding: 1em 0.7em;
+	border-radius: 30px;
+    max-width: 30%;
+    min-width: 10%;
+    text-align: center;
+	clear: both;
+    margin: 1em 0;
+    overflow-x: hidden;
+}
+
+.self {
+	float: right;
+	background-color: #0084ff;
+	color: white;
+}
+
+.him {
+	float: left;
+	background: #eee;
+}
+
+.input-container {
+	position: absolute;
+	bottom: 6%;
+	left: 3%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: white;
+	padding: 0.8em;
+	width: 90%;
+	border-radius: 5px;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+.input-container input {
+	padding: 0.5em;
+	flex: 1;
+	margin: 0 1em;
+}
+.input-container button {
+	background-color: #3212e8;
+	border: none;
+	color: white;
+	border-radius: 100%;
+	cursor: pointer;
+}
+.input-container i {
+	font-size: 1.5rem;
+	color: lightgray;
+}
+.input-container button > i {
+	font-size: 1rem;
+	padding: 0.5em;
+}
