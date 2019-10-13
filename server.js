@@ -2,21 +2,22 @@ const express = require('express');
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
-
-server.listen(3000);
+const serverless = require('serverless-http');
 
 app.use(express.static('public'));
 
+// Routes
 app.get('/', (req, res) => {
 	res.sendFile(__dirname + '/index.html');
 });
 
 app.get('/:roomId', (req, res) => {
 	console.log(req.params);
-	res.json({ msg: 'You just joined room!' });
+	const { roomId } = req.params;
+	res.json({ msg: 'You just joined a room!' });
 });
 
-const users = [];
+const rooms = [];
 
 io.on('connection', socket => {
 	// console.log(socket.id)
@@ -24,16 +25,34 @@ io.on('connection', socket => {
 		const { username } = data;
 		console.log(username);
 
-		// Something like this for rooms???
-		// if (username === 'Jacob') {
-		// 	socket.join('room1');
-		// } else socket.join('room2');
-		// io.to('room1').emit('chat message', { msg: 'You r in room1' });
-		// io.to('room2').emit('chat message', { msg: 'You r in room2' });
+		socket.emit('rooms', { rooms });
 
-		socket.on('chat message', msg => {
-			console.log(msg);
-			io.emit('chat message', { username, msg });
+		socket.on('chat message', data => {
+			console.log(data);
+			const { msg, roomId } = data;
+			io.to(roomId).emit('chat message', { username, msg });
+		});
+
+		socket.on('create room', data => {
+			const { roomId, friendName } = data;
+			console.log(friendName);
+			rooms.push({
+				roomId,
+				users: [{ username }, { username: friendName }]
+			});
+			console.log(rooms);
+			socket.emit('rooms', { rooms });
+		});
+
+		socket.on('join room', data => {
+			const { roomId } = data;
+			console.log(roomId);
+			socket.leaveAll();
+			socket.join(roomId);
 		});
 	});
 });
+
+server.listen(3000, () => console.log(`Server running on port 3000`));
+
+module.exports.handler = serverless(app);

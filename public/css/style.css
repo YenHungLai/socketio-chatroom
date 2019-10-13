@@ -4,35 +4,173 @@
 	box-sizing: border-box;
 }
 
+body {
+	background-image: linear-gradient(
+		-225deg,
+		#7742b2 0%,
+		#f180ff 52%,
+		#fd8bd9 100%
+	);
+	width: 100vw;
+	height: 100vh;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .container {
 	display: flex;
 	height: 90%;
 	width: 90%;
-	border: 1px black solid;
 	position: fixed;
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
+	background-color: #eff0ff;
 }
 
+/* Side drawer */
 .side-drawer-container {
 	width: 15%;
 	height: 100%;
+	background-color: #c5c8f8;
+    font-size: 1rem;
+    transition: all 0.5s ease-in;
+}
+.side-drawer-content {
+	height: 70%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+}
+.side-drawer-content .profile i {
+	font-size: 6rem;
+}
+.side-drawer-content .profile p {
+	text-align: center;
+	margin-top: 0.5em;
+	font-weight: bold;
+}
+.side-drawer-content .section-btns {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	align-items: center;
+}
+.side-drawer-content .section-btns button {
+	background-color: transparent;
+	display: flex;
+	justify-content: flex-start;
+	border: none;
+	margin: 0.5em 0;
+	text-transform: uppercase;
+	font-size: inherit;
+	width: 80%;
+	color: #7e7a7a;
+	cursor: pointer;
+	outline: none;
+}
+.side-drawer-content .section-btns button:hover {
+	opacity: 0.7;
+}
+.side-drawer-content .section-btns i {
+	margin: 0 1em;
 }
 
+.selected {
+
+}
+
+/* Room search */
 .search-container {
 	width: 30%;
-	height: 100%;
-	border: 1px red solid;
+    height: 100%;
+    transition: all 0.5s ease-in;
+}
+.search-container h1 {
+	padding: 1em 0 0 1em;
+}
+.search-container hr {
+	width: 75%;
+	margin: 1em auto;
 }
 
+.search-bar {
+	margin: 1em auto;
+	text-align: center;
+}
+.search-bar input {
+	background-color: transparent;
+	border: none;
+	outline: none;
+	width: 70%;
+}
+
+.rooms-list {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	max-height: 70%;
+	overflow-y: scroll;
+}
+/* Customize scroll bar */
+.rooms-list::-webkit-scrollbar {
+	width: 7px;
+	height: 0;
+}
+.rooms-list::-webkit-scrollbar-thumb {
+	background: rgba(0, 0, 0, 0);
+	border-radius: 10px;
+	box-shadow: rgba(255, 255, 255, 0.3) 0 0 0 1px;
+}
+.rooms-list:hover::-webkit-scrollbar-thumb {
+	background: rgba(156, 152, 152, 0.45);
+}
+.rooms-list::-webkit-scrollbar-thumb:hover {
+	background: rgba(0, 0, 0, 0.55);
+}
+
+.room {
+	background-color: white;
+	width: 85%;
+	height: 10%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	border-radius: 5px;
+	box-shadow: 0 0px 0px rgba(0, 0, 0, 0.19), 0 1px 1px rgba(0, 0, 0, 0.23);
+	margin-bottom: 1em;
+	margin-right: 0.5em;
+	padding: 0.5em;
+}
+.room > * {
+	pointer-events: none;
+}
+.room > p {
+	text-align: left;
+    flex: 0.3;
+}
+
+#add-room {
+	background-color: transparent;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	display: block;
+	margin: auto;
+}
+#add-room:active {
+	transform: translateY(-1px);
+}
+
+/* Chat area */
 .chat-area-container {
 	flex: 1;
 	position: relative;
 	display: flex;
 	flex-direction: column;
 	height: 100%;
-	background-color: #e9eafb;
+	visibility: hidden;
+	overflow: hidden;
 }
 
 .chat-area {
@@ -41,20 +179,20 @@
 	height: 80%;
 	width: 90%;
 	padding: 2em;
-    overflow-y: scroll;
-    overflow-x: hidden;
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
 
 .chat-msg {
 	display: inline-block;
 	padding: 1em 0.7em;
 	border-radius: 30px;
-    max-width: 30%;
-    min-width: 10%;
-    text-align: center;
+	max-width: 30%;
+	min-width: 10%;
+	text-align: center;
 	clear: both;
-    margin: 1em 0;
-    overflow-x: hidden;
+	margin: 1em 0;
+	overflow-x: hidden;
 }
 
 .self {
@@ -85,13 +223,15 @@
 	padding: 0.5em;
 	flex: 1;
 	margin: 0 1em;
+	outline: none;
 }
 .input-container button {
 	background-color: #3212e8;
 	border: none;
 	color: white;
 	border-radius: 100%;
-	cursor: pointer;
+    cursor: pointer;
+    margin: 0 0.5em;
 }
 .input-container i {
 	font-size: 1.5rem;
@@ -100,4 +240,25 @@
 .input-container button > i {
 	font-size: 1rem;
 	padding: 0.5em;
+	color: white;
+}
+
+@media (max-width: 1400px) {
+	.side-drawer-container {
+		font-size: 0.8rem;
+	}
+}
+@media (max-width: 1140px) {
+    .side-drawer-container {
+        position: absolute;
+        left: -100px;
+        opacity: 0;
+    }
+}
+@media (max-width: 700px) {
+    .search-container {
+        position: absolute;
+        left: -100px;
+        opacity: 0;
+    }
 }

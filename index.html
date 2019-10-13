@@ -17,7 +17,38 @@
 <body>
     <div class="container">
         <div class="side-drawer-container">
-
+            <div class="side-drawer-content">
+                <div class="profile">
+                    <i class="fas fa-user-circle"></i>
+                    <p class="username"></p>
+                </div>
+                <div class="section-btns">
+                    <button>
+                        <i class="fas fa-home"></i>
+                        <p>properties</p>
+                    </button>
+                    <button>
+                        <i class="fas fa-comment-alt"></i>
+                        <p>chat</p>
+                    </button>
+                    <button>
+                        <i class="fas fa-calendar"></i>
+                        <p>calendar</p>
+                    </button>
+                    <button>
+                        <i class="fas fa-tag"></i>
+                        <p>offers</p>
+                    </button>
+                    <button>
+                        <i class="fas fa-folder"></i>
+                        <p>documents</p>
+                    </button>
+                    <button>
+                        <i class="fas fa-cog"></i>
+                        <p>settings</p>
+                    </button>
+                </div>
+            </div>
         </div>
         <div class="search-container">
             <h1>Chat</h1>
@@ -25,11 +56,12 @@
                 <i class="fas fa-search"></i>
                 <input type="text" placeholder="Search">
             </div>
-            <div class="rooms">
-                <button id="add-room">
-                    <i class="fas fa-plus fa-2x"></i>
-                </button>
+            <hr>
+            <div class="rooms-list">
             </div>
+            <button id="add-room">
+                <i class="fas fa-plus fa-3x"></i>
+            </button>
         </div>
         <div class="chat-area-container">
             <div class="chat-area">
@@ -39,10 +71,8 @@
                 <div class="input-container">
                     <i class="far fa-smile"></i>
                     <input id="msg-input" placeholder="Type a message" type="text">
-                    <div>
-                        <i class="fas fa-paperclip"></i>
-                        <button type="submit"><i class="far fa-paper-plane"></i></button>
-                    </div>
+                    <i class="fas fa-paperclip"></i>
+                    <button type="submit"><i class="far fa-paper-plane"></i></button>
                 </div>
             </form>
         </div>
