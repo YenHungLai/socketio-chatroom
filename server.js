@@ -1,3 +1,7 @@
+/**
+ * TODO:
+ * - How to host an express static web app, not API
+ */
 const express = require('express');
 const app = express();
 const server = require('http').Server(app);
